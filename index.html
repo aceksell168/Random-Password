@@ -21,7 +21,6 @@
             padding: 1.5rem;
         }
 
-        /* glassmorphic dashboard card */
         .dashboard {
             max-width: 850px;
             width: 100%;
@@ -67,7 +66,6 @@
             padding-left: 12px;
         }
 
-        /* password display area */
         .password-panel {
             background: #05161fcc;
             border-radius: 1.8rem;
@@ -77,7 +75,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             border: 1px solid #2c4c6e;
             backdrop-filter: blur(5px);
             transition: 0.2s;
@@ -120,7 +118,6 @@
             box-shadow: 0 0 8px #38bdf8;
         }
 
-        /* controls grid */
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -224,7 +221,6 @@
             cursor: pointer;
         }
 
-        /* action area with auto controls */
         .action-area {
             display: flex;
             gap: 1rem;
@@ -267,7 +263,6 @@
             border-right: 1px solid #38bdf8;
         }
 
-        /* auto refresh panel */
         .auto-panel {
             background: #030d14a0;
             border-radius: 1.5rem;
@@ -414,6 +409,164 @@
             z-index: 999;
             font-weight: 500;
         }
+
+        .user-panel {
+            background: #05161fcc;
+            border-radius: 1.8rem;
+            padding: 0.5rem 1.5rem 0.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #2c4c6e;
+            backdrop-filter: blur(5px);
+        }
+        
+        #userIdInput {
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: 1px;
+            color: #eef5ff;
+            background: transparent;
+            border: none;
+            width: 60%;
+            padding: 0.8rem 0;
+            outline: none;
+            border-bottom: 2px solid #2c5a74;
+        }
+        #userIdInput::placeholder {
+            color: #5a7a94;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        #userIdInput:focus {
+            border-bottom-color: #38bdf8;
+        }
+
+        .user-history-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-history-btn {
+            background: #1a3343;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #b9e2ff;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.15s;
+        }
+        .user-history-btn:hover {
+            background: #2b4b6e;
+            box-shadow: 0 0 6px #38bdf8;
+        }
+
+        .user-history-dropdown-content {
+            display: none;
+            position: absolute;
+            background: #0a1a24;
+            min-width: 200px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-radius: 12px;
+            border: 1px solid #2c5a74;
+            z-index: 10;
+            padding: 5px 0;
+            margin-top: 5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+        .user-history-dropdown-content.show {
+            display: block;
+        }
+
+        .user-history-dropdown-content .item {
+            padding: 8px 16px;
+            color: #cde3fc;
+            font-size: 0.8rem;
+            font-family: monospace;
+            cursor: pointer;
+            transition: 0.1s;
+            border-bottom: 1px solid #1f3b4c;
+        }
+        .user-history-dropdown-content .item:hover {
+            background: #1d4d6e;
+        }
+        .user-history-dropdown-content .item:last-child {
+            border-bottom: none;
+        }
+        .user-history-dropdown-content .empty-msg {
+            padding: 12px 16px;
+            color: #5a7a94;
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        .credential-box {
+            background: #030d14a0;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0 0.8rem 0;
+            border-left: 3px solid #38bdf8;
+        }
+        .credential-box p {
+            color: #cde3fc;
+            font-size: 0.95rem;
+            margin: 0.25rem 0;
+        }
+        .credential-box strong {
+            color: #7dd3fc;
+            font-weight: 500;
+        }
+        .notice {
+            background: #0f1f2b80;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1.2rem;
+            font-size: 0.75rem;
+            color: #aac9e0;
+            border: 1px solid #2c5a74;
+            margin-top: 0.7rem;
+            line-height: 1.6;
+        }
+        .notice i {
+            color: #ffb347;
+            font-style: normal;
+        }
+        .copy-mini {
+            background: #1a3343;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #b9e2ff;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.15s;
+        }
+        .copy-mini:hover {
+            background: #2b4b6e;
+            box-shadow: 0 0 6px #38bdf8;
+        }
+        .user-id-label {
+            color: #8ca3ba;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .flex-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -426,15 +579,43 @@
         </h1>
         <div class="stats-badge" id="uniqueCounterDisplay">🔐 generated: 0</div>
     </div>
-    <div class="sub">✔ zero-collision engine — setiap password unik seumur hidup dashboard · auto ganti sesuai interval</div>
+    <div class="sub">✔ Sesuaikan Interval Untuk Auto Generate Password Baru</div>
 
-    <!-- generated password field -->
+    <!-- USER ID PANEL dengan localStorage -->
+    <div class="user-panel">
+        <div class="flex-row">
+            <span class="user-id-label">User ID</span>
+            <input type="text" id="userIdInput" placeholder="Tempel ID Anda di sini..." value="">
+            
+            <div class="user-history-dropdown">
+                <button class="user-history-btn" id="historyDropdownBtn">📜 History ID</button>
+                <div class="user-history-dropdown-content" id="historyDropdownContent">
+                    <div class="empty-msg">Belum ada ID tersimpan</div>
+                </div>
+            </div>
+            
+            <button class="copy-mini" id="copyUserIdBtn">📋 Copy ID</button>
+            <button class="copy-mini" id="saveUserIdBtn" style="background:#1d4d6e;">💾 Simpan ID</button>
+        </div>
+    </div>
+
+    <!-- PASSWORD PANEL -->
     <div class="password-panel">
         <div id="generatedPassword" style="white-space: pre-wrap;">────────</div>
         <button class="copy-btn" id="copyPasswordBtn">📋 Copy</button>
     </div>
 
-    <!-- controls: length & character sets -->
+    <!-- credential box -->
+    <div class="credential-box">
+        <p><strong>Username :</strong> <span id="credUsername">───</span></p>
+        <p><strong>Password :</strong> <span id="credPassword">────────</span></p>
+        <div style="margin-top: 6px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="copy-mini" id="copyCredPairBtn">📋 Copy Username + Password</button>
+            <span style="font-size:0.65rem; color:#7ea6c2;">Silakan di coba login ya bosku</span>
+        </div>
+    </div>
+
+    <!-- controls -->
     <div class="controls">
         <div class="length-control">
             <label>PASSWORD LENGTH (MAX 12)</label>
@@ -456,7 +637,7 @@
         </div>
     </div>
 
-    <!-- AUTO REFRESH PANEL dengan settingan menit -->
+    <!-- AUTO REFRESH -->
     <div class="auto-panel">
         <div class="auto-toggle" id="autoToggleBtn">
             <input type="checkbox" id="autoRefreshCheckbox"> 
@@ -479,24 +660,59 @@
 
     <div class="history-section">
         <div class="history-title">
-            <span>📜 Riwayat (unik terjamin · last 15)</span>
-            <button id="clearHistoryBtn" class="clear-history">clear all</button>
+            <span>📜 Riwayat Password Unik </span>
+            <button id="clearHistoryBtn" class="clear-history">Clear All History</button>
         </div>
         <div id="historyList">
             <div class="history-item" style="opacity:0.6;">✨ Tekan Generate — password unik selamanya</div>
         </div>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="notice">
+        <i>⚠️</i> Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku. <br> terima kasih
     </div>
 </div>
 <div id="toastMsg" class="toast-msg" style="opacity:0;">✓ Tersalin</div>
 
 <script>
     (function() {
-        // ---------- GLOBAL UNIQUE SET (tidak akan pernah ada duplicate) ----------
-        let globalPasswordSet = new Set();     // semua password yang pernah digenerate
-        let generatedHistory = [];              // max 15 untuk UI
-        
-        // DOM Elements
+        // ========== LOCALSTORAGE KEYS ==========
+        const STORAGE_KEY_ID_HISTORY = 'aetherkey_user_ids';
+        const STORAGE_KEY_PASSWORD_SET = 'aetherkey_password_set';
+        const STORAGE_KEY_PASSWORD_HISTORY = 'aetherkey_password_history';
+
+        // ========== LOAD FROM LOCALSTORAGE ==========
+        let globalPasswordSet = new Set();
+        let generatedHistory = [];
+
+        // Load password set
+        try {
+            const savedSet = localStorage.getItem(STORAGE_KEY_PASSWORD_SET);
+            if (savedSet) {
+                const arr = JSON.parse(savedSet);
+                if (Array.isArray(arr)) {
+                    globalPasswordSet = new Set(arr);
+                }
+            }
+        } catch(e) {}
+
+        // Load password history
+        try {
+            const savedHistory = localStorage.getItem(STORAGE_KEY_PASSWORD_HISTORY);
+            if (savedHistory) {
+                const arr = JSON.parse(savedHistory);
+                if (Array.isArray(arr)) {
+                    generatedHistory = arr;
+                }
+            }
+        } catch(e) {}
+
+        // ========== DOM ELEMENTS ==========
         const generatedPasswordDiv = document.getElementById("generatedPassword");
+        const userIdInput = document.getElementById("userIdInput");
+        const credUsername = document.getElementById("credUsername");
+        const credPassword = document.getElementById("credPassword");
         const lengthSlider = document.getElementById("lengthSlider");
         const lengthNumberSpan = document.getElementById("lengthNumber");
         const includeNumbersCB = document.getElementById("includeNumbers");
@@ -504,23 +720,26 @@
         const includeMixedCaseCB = document.getElementById("includeMixedCase");
         const generateBtn = document.getElementById("generateBtn");
         const copyBtn = document.getElementById("copyPasswordBtn");
+        const copyUserIdBtn = document.getElementById("copyUserIdBtn");
+        const copyCredPairBtn = document.getElementById("copyCredPairBtn");
+        const saveUserIdBtn = document.getElementById("saveUserIdBtn");
         const historyContainer = document.getElementById("historyList");
         const clearHistoryBtn = document.getElementById("clearHistoryBtn");
         const uniqueCounterDisplay = document.getElementById("uniqueCounterDisplay");
         const entropyHint = document.getElementById("entropyHint");
         const toast = document.getElementById("toastMsg");
+        const historyDropdownBtn = document.getElementById("historyDropdownBtn");
+        const historyDropdownContent = document.getElementById("historyDropdownContent");
         
-        // Auto refresh elements
         const autoRefreshCheckbox = document.getElementById("autoRefreshCheckbox");
         const intervalMinutesInput = document.getElementById("intervalMinutes");
         const autoStatusText = document.getElementById("autoStatusText");
         
-        // Timer variable
         let autoTimer = null;
         let isAutoEnabled = false;
-        
-        // Helper: toast message
         let toastTimeout;
+
+        // ========== HELPER FUNCTIONS ==========
         function showMessage(text, isError = false) {
             toast.innerText = text;
             toast.style.opacity = "1";
@@ -530,39 +749,104 @@
                 toast.style.opacity = "0";
             }, 2000);
         }
-        
-        // Update tampilan jumlah unique
+
+        // ========== LOCALSTORAGE SAVE ==========
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY_PASSWORD_SET, JSON.stringify([...globalPasswordSet]));
+                localStorage.setItem(STORAGE_KEY_PASSWORD_HISTORY, JSON.stringify(generatedHistory));
+            } catch(e) {
+                console.warn("Gagal menyimpan ke localStorage:", e);
+            }
+        }
+
+        // ========== USER ID HISTORY ==========
+        function getUserIdHistory() {
+            try {
+                const data = localStorage.getItem(STORAGE_KEY_ID_HISTORY);
+                if (data) {
+                    const parsed = JSON.parse(data);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch(e) {}
+            return [];
+        }
+
+        function saveUserIdHistory(ids) {
+            try {
+                localStorage.setItem(STORAGE_KEY_ID_HISTORY, JSON.stringify(ids));
+            } catch(e) {}
+        }
+
+        function addUserIdToHistory(userId) {
+            if (!userId || userId.trim() === '') return;
+            const trimmed = userId.trim();
+            let history = getUserIdHistory();
+            // Hapus duplikat
+            history = history.filter(id => id !== trimmed);
+            // Tambahkan di awal
+            history.unshift(trimmed);
+            // Maksimal 20 ID
+            if (history.length > 20) history = history.slice(0, 20);
+            saveUserIdHistory(history);
+            renderUserHistoryDropdown();
+        }
+
+        function renderUserHistoryDropdown() {
+            const history = getUserIdHistory();
+            if (history.length === 0) {
+                historyDropdownContent.innerHTML = `<div class="empty-msg">Belum ada ID tersimpan</div>`;
+                return;
+            }
+            let html = '';
+            history.forEach(id => {
+                html += `<div class="item" data-id="${escapeHtml(id)}">${escapeHtml(id)}</div>`;
+            });
+            historyDropdownContent.innerHTML = html;
+
+            // Event listener untuk setiap item
+            historyDropdownContent.querySelectorAll('.item').forEach(el => {
+                el.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    userIdInput.value = id;
+                    credUsername.innerText = id;
+                    historyDropdownContent.classList.remove('show');
+                    showMessage(`ID "${id}" dipilih`, false);
+                });
+            });
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if(m === '&') return '&amp;';
+                if(m === '<') return '&lt;';
+                if(m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // ========== PASSWORD FUNCTIONS ==========
         function updateStatsUI() {
             const uniqueCount = globalPasswordSet.size;
             uniqueCounterDisplay.innerText = `🔐 generated: ${uniqueCount}`;
             entropyHint.innerText = uniqueCount >= 10 ? `🌀 ${uniqueCount} unique keys · no repeat` : `⚡ unique pool: ${uniqueCount} passwords`;
+            saveToLocalStorage();
         }
-        
-        // -------- BUILD CHARACTER SET --------
+
         function buildCharSet(includeNumbers, includeSymbols, includeMixedCase) {
             let lower = "abcdefghijklmnopqrstuvwxyz";
             let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             let numbers = "0123456789";
             let symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`";
-            
             let charset = "";
-            if(includeMixedCase) {
-                charset += lower + upper;
-            } else {
-                charset += lower;
-            }
+            if(includeMixedCase) charset += lower + upper;
+            else charset += lower;
             if(includeNumbers) charset += numbers;
             if(includeSymbols) charset += symbols;
-            
-            // fallback safety
-            if(charset.length === 0) {
-                charset = "abcdefghijklmnopqrstuvwxyz";
-                includeMixedCaseCB.checked = false;
-            }
+            if(charset.length === 0) charset = "abcdefghijklmnopqrstuvwxyz";
             return charset;
         }
-        
-        // Crypto-secure random
+
         function getSecureRandomInt(max) {
             const range = max;
             const maxValid = Math.floor(256 / range) * range;
@@ -572,55 +856,51 @@
             } while(randomValue >= maxValid);
             return randomValue % range;
         }
-        
+
         function generateRawPassword(length, charset) {
             let password = "";
             const charLen = charset.length;
             for(let i = 0; i < length; i++) {
-                const randIndex = getSecureRandomInt(charLen);
-                password += charset[randIndex];
+                password += charset[getSecureRandomInt(charLen)];
             }
             return password;
         }
-        
-        // ---------- UNIQUE GENERATOR ENGINE (tidak pernah kembar) ----------
+
         function generateUniquePassword(length, includeNumbers, includeSymbols, includeMixedCase) {
             const charset = buildCharSet(includeNumbers, includeSymbols, includeMixedCase);
             if(charset.length === 0) return "error_charset";
-            
             let maxAttempts = 30;
             let attempt = 0;
             let newPassword = "";
             while(attempt < maxAttempts) {
                 newPassword = generateRawPassword(length, charset);
-                if(!globalPasswordSet.has(newPassword)) {
-                    return newPassword;
-                }
+                if(!globalPasswordSet.has(newPassword)) return newPassword;
                 attempt++;
             }
-            // Fallback super aman: tambahkan suffix incremental tapi tetap unique
             let suffix = 0;
             while(true) {
                 let candidate = generateRawPassword(length, charset);
                 if(!globalPasswordSet.has(candidate)) return candidate;
                 suffix++;
                 if(suffix > 50) {
-                    // extreme case: inject timestamp pendek
                     const extra = Date.now().toString(36).slice(-3);
                     candidate = candidate.slice(0, length-3) + extra;
                     if(!globalPasswordSet.has(candidate)) return candidate;
                 }
             }
         }
-        
-        // fungsi utama: generate password baru (unik) + update UI + history + reset timer jika auto aktif
+
+        function updateCredentialUI(userId, password) {
+            credUsername.innerText = userId || '───';
+            credPassword.innerText = password || '────────';
+        }
+
         function refreshAndGenerate(showToastMessage = true) {
             const length = parseInt(lengthSlider.value, 10);
             const includeNumbers = includeNumbersCB.checked;
             const includeSymbols = includeSymbolsCB.checked;
             const includeMixedCase = includeMixedCaseCB.checked;
             
-            // validasi charset
             const tempSet = buildCharSet(includeNumbers, includeSymbols, includeMixedCase);
             if(tempSet.length === 0) {
                 showMessage("⚠️ Pilih minimal satu tipe karakter!", true);
@@ -631,10 +911,7 @@
                 return;
             }
             
-            // generate password unique 100%
             let newPassword = generateUniquePassword(length, includeNumbers, includeSymbols, includeMixedCase);
-            
-            // double safety
             if(globalPasswordSet.has(newPassword)) {
                 for(let i=0;i<20;i++) {
                     const fallback = generateRawPassword(length, tempSet);
@@ -645,32 +922,34 @@
                 }
             }
             
-            // masukkan ke Set global
             globalPasswordSet.add(newPassword);
             
-            // update history (max 15)
+            let currentUserId = userIdInput.value.trim();
+            if(!currentUserId) {
+                currentUserId = "AETH-XXXX-XXXX";
+                userIdInput.value = currentUserId;
+            }
+
             generatedHistory.unshift({
                 pwd: newPassword,
                 timestamp: new Date().toLocaleTimeString()
             });
             if(generatedHistory.length > 15) generatedHistory.pop();
             
-            // tampilkan di dashboard
             generatedPasswordDiv.innerText = newPassword;
+            updateCredentialUI(currentUserId, newPassword);
             
-            // render history
             renderHistory();
             updateStatsUI();
+            saveToLocalStorage();
             
             if(showToastMessage) {
                 showMessage(`✓ Password baru (total ${globalPasswordSet.size} unik)`, false);
             }
             
-            // Jika mode auto menyala, reset timer agar interval baru terhitung sejak generate terakhir
             resetAutoTimer();
         }
-        
-        // render history dengan badge unique
+
         function renderHistory() {
             if(generatedHistory.length === 0) {
                 historyContainer.innerHTML = `<div class="history-item" style="opacity:0.6;">✨ Belum ada password — tekan Generate</div>`;
@@ -688,31 +967,23 @@
                         <span style="font-family: monospace; word-break:break-all;">${escapeHtml(displayPwd)}</span>
                         <span style="display: flex; gap: 6px;">
                             <span class="badge-unique">✓ unik</span>
-                            <span style="font-size:0.65rem; color:#7ea6c2;">${entry.timestamp}</span>
+                            <span style="font-size:0.65rem; color:#7ea6c2;">${escapeHtml(entry.timestamp)}</span>
                         </span>
                     </div>
                 `;
             }
             historyContainer.innerHTML = html;
         }
-        
-        function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function(m) {
-                if(m === '&') return '&amp;';
-                if(m === '<') return '&lt;';
-                if(m === '>') return '&gt;';
-                return m;
-            });
-        }
-        
+
         function clearHistoryOnly() {
             generatedHistory = [];
             renderHistory();
-            showMessage("Riwayat dihapus, tapi uniqueness vault tetap utuh (tidak akan ada duplicate)", false);
+            saveToLocalStorage();
+            showMessage("Riwayat dihapus, tapi uniqueness vault tetap utuh", false);
             updateStatsUI();
         }
-        
-        // -------- AUTO REFRESH LOGIC with CUSTOMIZABLE MINUTES ----------
+
+        // ========== AUTO REFRESH ==========
         function startAutoRefresh() {
             if(autoTimer) clearInterval(autoTimer);
             let intervalMinutes = parseFloat(intervalMinutesInput.value);
@@ -724,14 +995,13 @@
             const intervalMs = intervalMinutes * 60 * 1000;
             autoTimer = setInterval(() => {
                 if(isAutoEnabled) {
-                    // auto generate password baru tanpa menampilkan toast berlebihan (opsional kasih notif ringan)
                     refreshAndGenerate(true);
                 }
             }, intervalMs);
             autoStatusText.innerText = `🟢 Auto aktif · setiap ${intervalMinutes} menit`;
             autoStatusText.style.color = "#8effc4";
         }
-        
+
         function stopAutoRefresh() {
             if(autoTimer) {
                 clearInterval(autoTimer);
@@ -740,10 +1010,9 @@
             autoStatusText.innerText = `⏸️ Auto mati`;
             autoStatusText.style.color = "#7dd3fc";
         }
-        
+
         function resetAutoTimer() {
             if(isAutoEnabled) {
-                // restart timer agar interval dihitung ulang sejak generate terakhir
                 if(autoTimer) clearInterval(autoTimer);
                 let intervalMinutes = parseFloat(intervalMinutesInput.value);
                 if(isNaN(intervalMinutes) || intervalMinutes <= 0) intervalMinutes = 20;
@@ -757,7 +1026,7 @@
                 autoStatusText.innerText = `🟢 Auto aktif · setiap ${intervalMinutes} menit (reset)`;
             }
         }
-        
+
         function setAutoMode(enable) {
             isAutoEnabled = enable;
             autoRefreshCheckbox.checked = enable;
@@ -770,33 +1039,25 @@
                 showMessage("Auto refresh dimatikan", false);
             }
         }
-        
-        // event listener untuk toggle auto
+
         function bindAutoEvents() {
             autoRefreshCheckbox.addEventListener("change", (e) => {
                 setAutoMode(e.target.checked);
             });
-            
             intervalMinutesInput.addEventListener("change", () => {
                 let val = parseFloat(intervalMinutesInput.value);
                 if(isNaN(val)) val = 20;
                 val = Math.min(120, Math.max(0.5, val));
                 intervalMinutesInput.value = val;
                 if(isAutoEnabled) {
-                    // restart timer dengan interval baru
                     if(autoTimer) clearInterval(autoTimer);
                     startAutoRefresh();
                     showMessage(`Interval auto diubah menjadi ${val} menit`, false);
                 }
             });
         }
-        
-        // sync length slider
-        function syncLength() {
-            let val = parseInt(lengthSlider.value, 10);
-            lengthNumberSpan.innerText = val;
-        }
-        
+
+        // ========== COPY FUNCTIONS ==========
         async function copyPassword() {
             const pwd = generatedPasswordDiv.innerText;
             if(!pwd || pwd === "────────") {
@@ -805,54 +1066,139 @@
             }
             try {
                 await navigator.clipboard.writeText(pwd);
-                showMessage("🔒 Password disalin ke clipboard!", false);
+                showMessage("🔒 Password disalin!", false);
             } catch(e) {
                 showMessage("Gagal menyalin", true);
             }
         }
-        
-        // inisialisasi dashboard: password pertama default length = 6, unique, max 12
+
+        async function copyUserId() {
+            const uid = userIdInput.value.trim();
+            if(!uid) {
+                showMessage("Tidak ada ID untuk disalin", true);
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(uid);
+                showMessage("🆔 User ID disalin!", false);
+            } catch(e) {
+                showMessage("Gagal menyalin", true);
+            }
+        }
+
+        async function copyCredPair() {
+            const uid = userIdInput.value.trim();
+            const pwd = generatedPasswordDiv.innerText;
+            if(!uid || !pwd || pwd === "────────") {
+                showMessage("Data credential belum siap", true);
+                return;
+            }
+            
+            const fullText = 
+`Username : ${uid}
+Password : ${pwd}
+Silakan di coba login ya bosku
+
+NB : Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku.
+terima kasih`;
+            
+            try {
+                await navigator.clipboard.writeText(fullText);
+                showMessage("✅ Credential lengkap disalin!", false);
+            } catch(e) {
+                showMessage("Gagal menyalin", true);
+            }
+        }
+
+        // ========== SAVE USER ID ==========
+        function saveCurrentUserId() {
+            const uid = userIdInput.value.trim();
+            if (!uid) {
+                showMessage("Masukkan ID terlebih dahulu!", true);
+                return;
+            }
+            addUserIdToHistory(uid);
+            showMessage(`✅ ID "${uid}" tersimpan di perangkat ini`, false);
+        }
+
+        // ========== DROPDOWN TOGGLE ==========
+        function toggleDropdown() {
+            historyDropdownContent.classList.toggle('show');
+            renderUserHistoryDropdown();
+        }
+
+        // ========== INIT ==========
         function initDashboard() {
-            // set max slider 12
             lengthSlider.max = 12;
             lengthSlider.min = 4;
             lengthSlider.value = "6";
             lengthNumberSpan.innerText = "6";
-            
-            // generate initial password unik (panjang 6, dengan angka, simbol, mixed case)
+
+            // Coba load last used ID dari history
+            const history = getUserIdHistory();
+            let defaultId = "";
+            if (history.length > 0) {
+                defaultId = history[0];
+            } else {
+                defaultId = "AETH-8X7K-9M2P";
+            }
+            userIdInput.value = defaultId;
+
+            // Generate initial password
             const initLength = 6;
-            const initNumbers = true;
-            const initSymbols = true;
-            const initMixed = true;
-            const charsetInit = buildCharSet(initNumbers, initSymbols, initMixed);
+            const charsetInit = buildCharSet(true, true, true);
             let firstPwd = "";
             for(let i=0; i<initLength; i++) {
                 firstPwd += charsetInit[getSecureRandomInt(charsetInit.length)];
             }
-            // pastikan unik (set masih kosong)
             globalPasswordSet.add(firstPwd);
-            generatedHistory.unshift({ pwd: firstPwd, timestamp: new Date().toLocaleTimeString() });
+            
+            if (generatedHistory.length === 0) {
+                generatedHistory.unshift({ pwd: firstPwd, timestamp: new Date().toLocaleTimeString() });
+            } else {
+                // pastikan history terakhir ada di display
+                const lastPwd = generatedHistory[0]?.pwd || firstPwd;
+                generatedPasswordDiv.innerText = lastPwd;
+            }
+            
             generatedPasswordDiv.innerText = firstPwd;
+            updateCredentialUI(defaultId, firstPwd);
             renderHistory();
             updateStatsUI();
-            
-            // event listeners
+            renderUserHistoryDropdown();
+
+            // Event listeners
             lengthSlider.addEventListener("input", () => {
-                syncLength();
+                let val = parseInt(lengthSlider.value, 10);
+                lengthNumberSpan.innerText = val;
             });
-            generateBtn.addEventListener("click", () => {
-                refreshAndGenerate(true);
-            });
+
+            generateBtn.addEventListener("click", () => refreshAndGenerate(true));
             copyBtn.addEventListener("click", copyPassword);
+            copyUserIdBtn.addEventListener("click", copyUserId);
+            copyCredPairBtn.addEventListener("click", copyCredPair);
+            saveUserIdBtn.addEventListener("click", saveCurrentUserId);
             clearHistoryBtn.addEventListener("click", clearHistoryOnly);
+            historyDropdownBtn.addEventListener("click", toggleDropdown);
+
+            // Tutup dropdown saat klik di luar
+            document.addEventListener("click", function(e) {
+                if (!e.target.closest('.user-history-dropdown')) {
+                    historyDropdownContent.classList.remove('show');
+                }
+            });
+
+            userIdInput.addEventListener("input", function() {
+                const val = this.value.trim() || "───";
+                credUsername.innerText = val;
+            });
+
             bindAutoEvents();
-            
-            // default auto mati
             setAutoMode(false);
         }
-        
+
         initDashboard();
     })();
 </script>
 </body>
-</html>
+</html>    
