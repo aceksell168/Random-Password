@@ -66,58 +66,248 @@
             padding-left: 12px;
         }
 
-        .password-panel {
-            background: #05161fcc;
-            border-radius: 1.8rem;
-            padding: 0.5rem 1.5rem 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #2c4c6e;
-            backdrop-filter: blur(5px);
-            transition: 0.2s;
+        /* ====== MAIN TABLE ====== */
+        .credential-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(3, 12, 22, 0.4);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid #1f5a7a;
         }
 
-        #generatedPassword {
-            font-size: 1.6rem;
-            font-weight: 500;
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-            letter-spacing: 1px;
+        .credential-table td {
+            padding: 0.8rem 1.2rem;
+            border-bottom: 1px solid #1f4058;
+            vertical-align: middle;
+        }
+
+        .credential-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .credential-table .label {
+            color: #7dd3fc;
+            font-weight: 600;
+            font-size: 0.85rem;
+            width: 100px;
+            white-space: nowrap;
+        }
+
+        .credential-table .value {
+            color: #eef5ff;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
             word-break: break-all;
+        }
+
+        .credential-table .value-password {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* User ID row dengan input */
+        .user-id-row .value {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        #userIdInput {
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: 1px;
+            color: #eef5ff;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #2c5a74;
+            padding: 0.3rem 0;
+            min-width: 180px;
+            flex: 1;
+            outline: none;
+        }
+        #userIdInput::placeholder {
+            color: #5a7a94;
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+        #userIdInput:focus {
+            border-bottom-color: #38bdf8;
+        }
+
+        /* Password row */
+        #generatedPassword {
+            font-size: 1.3rem;
+            font-weight: 500;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: 1px;
             color: #eef5ff;
             text-shadow: 0 0 4px #00b4ff40;
             background: transparent;
             border: none;
-            width: 70%;
-            padding: 1rem 0;
+            padding: 0.2rem 0;
+            width: 100%;
         }
 
-        .copy-btn {
+        /* Button styles */
+        .btn-mini {
+            background: #1a3343;
+            border: none;
+            padding: 5px 14px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #b9e2ff;
+            cursor: pointer;
+            font-size: 0.7rem;
+            transition: 0.15s;
+            white-space: nowrap;
+        }
+        .btn-mini:hover {
+            background: #2b4b6e;
+            box-shadow: 0 0 6px #38bdf8;
+        }
+        .btn-mini.primary {
+            background: #1d4d6e;
+        }
+        .btn-mini.primary:hover {
+            background: #2a6a94;
+        }
+
+        .btn-generate {
+            background: linear-gradient(95deg, #0f2b3b, #0a4058);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #e3f2ff;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #2c84b0;
+            white-space: nowrap;
+        }
+        .btn-generate:hover {
+            background: linear-gradient(95deg, #1e4b66, #0e5d80);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 160, 255, 0.2);
+        }
+
+        .btn-copy {
             background: #1e2f3f;
             border: none;
-            padding: 10px 18px;
+            padding: 6px 16px;
             border-radius: 60px;
             font-weight: 600;
             color: #b9e2ff;
             cursor: pointer;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            backdrop-filter: blur(5px);
+            font-size: 0.75rem;
         }
-
-        .copy-btn:hover {
+        .btn-copy:hover {
             background: #2b4b6e;
             color: white;
             transform: scale(0.97);
             box-shadow: 0 0 8px #38bdf8;
         }
 
+        /* History ID dropdown */
+        .user-history-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .user-history-dropdown-content {
+            display: none;
+            position: absolute;
+            background: #0a1a24;
+            min-width: 200px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-radius: 12px;
+            border: 1px solid #2c5a74;
+            z-index: 10;
+            padding: 5px 0;
+            margin-top: 5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            right: 0;
+        }
+        .user-history-dropdown-content.show {
+            display: block;
+        }
+        .user-history-dropdown-content .item {
+            padding: 8px 16px;
+            color: #cde3fc;
+            font-size: 0.8rem;
+            font-family: monospace;
+            cursor: pointer;
+            transition: 0.1s;
+            border-bottom: 1px solid #1f3b4c;
+        }
+        .user-history-dropdown-content .item:hover {
+            background: #1d4d6e;
+        }
+        .user-history-dropdown-content .item:last-child {
+            border-bottom: none;
+        }
+        .user-history-dropdown-content .empty-msg {
+            padding: 12px 16px;
+            color: #5a7a94;
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Credential display - format vertikal */
+        .credential-display {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+        .credential-display .cred-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .credential-display .cred-label {
+            color: #7dd3fc;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 85px;
+        }
+        .credential-display .cred-value {
+            color: #eef5ff;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            word-break: break-all;
+        }
+        .credential-display .cred-sub {
+            font-size: 0.65rem;
+            color: #7ea6c2;
+            margin-top: 2px;
+        }
+
+        /* Notice row */
+        .notice-row td {
+            padding: 0.8rem 1.2rem;
+            background: #0f1f2b40;
+        }
+        .notice-text {
+            font-size: 0.72rem;
+            color: #aac9e0;
+            line-height: 1.6;
+        }
+        .notice-text i {
+            color: #ffb347;
+            font-style: normal;
+        }
+
+        /* controls */
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -134,7 +324,6 @@
             flex: 2;
             min-width: 150px;
         }
-
         .length-control label {
             display: block;
             font-size: 0.75rem;
@@ -144,13 +333,11 @@
             color: #9cb6d4;
             margin-bottom: 6px;
         }
-
         .length-value {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         #lengthSlider {
             flex: 1;
             height: 5px;
@@ -158,7 +345,6 @@
             background: #1f3b4c;
             -webkit-appearance: none;
         }
-
         #lengthSlider::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 18px;
@@ -169,7 +355,6 @@
             box-shadow: 0 0 6px cyan;
             border: none;
         }
-
         #lengthNumber {
             background: #0a1a24;
             width: 70px;
@@ -188,85 +373,40 @@
             gap: 1rem;
             align-items: center;
         }
-
         .toggle-chip {
             display: flex;
             align-items: center;
             gap: 8px;
             background: #0b1923;
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 60px;
             cursor: pointer;
             transition: 0.2s;
             border: 1px solid #1f4058;
         }
-
         .toggle-chip.active {
             background: #1d4d6e;
             border-color: #38bdf8;
             box-shadow: 0 0 5px #38bdf8;
         }
-
         .toggle-chip input {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             accent-color: #38bdf8;
             cursor: pointer;
         }
-
         .toggle-chip label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             color: #cde3fc;
             cursor: pointer;
         }
 
-        .action-area {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .generate-btn {
-            background: linear-gradient(95deg, #0f2b3b, #0a4058);
-            border: none;
-            padding: 12px 28px;
-            border-radius: 60px;
-            font-weight: bold;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #e3f2ff;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid #2c84b0;
-        }
-
-        .generate-btn:hover {
-            background: linear-gradient(95deg, #1e4b66, #0e5d80);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0, 160, 255, 0.2);
-        }
-
-        .stats-badge {
-            background: #02121e70;
-            backdrop-filter: blur(4px);
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-size: 0.75rem;
-            font-family: monospace;
-            color: #b3e4ff;
-            border-right: 1px solid #38bdf8;
-        }
-
+        /* auto panel */
         .auto-panel {
             background: #030d14a0;
             border-radius: 1.5rem;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             margin-bottom: 1.5rem;
             display: flex;
             flex-wrap: wrap;
@@ -275,64 +415,69 @@
             gap: 1rem;
             border: 1px solid #1f5a7a;
         }
-
         .auto-toggle {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: #0b1923;
-            padding: 6px 18px;
+            padding: 5px 14px;
             border-radius: 60px;
             cursor: pointer;
         }
-
         .auto-toggle input {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             accent-color: #38bdf8;
             cursor: pointer;
         }
-
         .auto-toggle label {
             font-weight: 600;
             color: #cde3fc;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
-
         .interval-control {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: #0b1923;
-            padding: 6px 20px;
+            padding: 5px 16px;
             border-radius: 60px;
         }
-
         .interval-control label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #9cb6d4;
             font-weight: 500;
         }
-
         #intervalMinutes {
             background: #0a1a24;
             border: 1px solid #2c5a74;
             color: white;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 40px;
-            width: 80px;
+            width: 70px;
             text-align: center;
             font-weight: bold;
             font-family: monospace;
+            font-size: 0.8rem;
         }
-
         .auto-status {
             font-size: 0.7rem;
             background: #1f3b4c;
-            padding: 5px 12px;
+            padding: 4px 12px;
             border-radius: 40px;
             color: #7dd3fc;
+        }
+
+        .stats-badge {
+            background: #02121e70;
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-size: 0.7rem;
+            font-family: monospace;
+            color: #b3e4ff;
+            border-right: 1px solid #38bdf8;
         }
 
         hr {
@@ -343,7 +488,6 @@
         .history-section {
             margin-top: 0.5rem;
         }
-
         .history-title {
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -353,28 +497,25 @@
             justify-content: space-between;
             margin-bottom: 10px;
         }
-
         #historyList {
             background: #030d14a0;
             border-radius: 1.2rem;
             padding: 0.7rem;
-            max-height: 140px;
+            max-height: 120px;
             overflow-y: auto;
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #bbdef5;
             border: 0.5px solid #1f5a7a;
         }
-
         .history-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-bottom: 1px solid #1f4158;
             font-family: monospace;
             word-break: break-all;
         }
-
         .clear-history {
             background: none;
             border: none;
@@ -383,9 +524,8 @@
             font-size: 0.7rem;
             text-decoration: underline;
         }
-
         .badge-unique {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             background: #1f846030;
             padding: 2px 8px;
             border-radius: 40px;
@@ -410,162 +550,36 @@
             font-weight: 500;
         }
 
-        .user-panel {
-            background: #05161fcc;
-            border-radius: 1.8rem;
-            padding: 0.5rem 1.5rem 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #2c4c6e;
-            backdrop-filter: blur(5px);
-        }
-        
-        #userIdInput {
-            font-size: 1.2rem;
-            font-weight: 500;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            letter-spacing: 1px;
-            color: #eef5ff;
-            background: transparent;
-            border: none;
-            width: 60%;
-            padding: 0.8rem 0;
-            outline: none;
-            border-bottom: 2px solid #2c5a74;
-        }
-        #userIdInput::placeholder {
-            color: #5a7a94;
-            font-size: 0.9rem;
-            font-weight: 300;
-        }
-        #userIdInput:focus {
-            border-bottom-color: #38bdf8;
-        }
-
-        .user-history-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .user-history-btn {
-            background: #1a3343;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-weight: 500;
-            color: #b9e2ff;
-            cursor: pointer;
-            font-size: 0.7rem;
-            transition: 0.15s;
-        }
-        .user-history-btn:hover {
-            background: #2b4b6e;
-            box-shadow: 0 0 6px #38bdf8;
-        }
-
-        .user-history-dropdown-content {
-            display: none;
-            position: absolute;
-            background: #0a1a24;
-            min-width: 200px;
-            max-height: 150px;
-            overflow-y: auto;
-            border-radius: 12px;
-            border: 1px solid #2c5a74;
-            z-index: 10;
-            padding: 5px 0;
-            margin-top: 5px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-        }
-
-        .user-history-dropdown-content.show {
-            display: block;
-        }
-
-        .user-history-dropdown-content .item {
-            padding: 8px 16px;
-            color: #cde3fc;
-            font-size: 0.8rem;
-            font-family: monospace;
-            cursor: pointer;
-            transition: 0.1s;
-            border-bottom: 1px solid #1f3b4c;
-        }
-        .user-history-dropdown-content .item:hover {
-            background: #1d4d6e;
-        }
-        .user-history-dropdown-content .item:last-child {
-            border-bottom: none;
-        }
-        .user-history-dropdown-content .empty-msg {
-            padding: 12px 16px;
-            color: #5a7a94;
-            font-size: 0.75rem;
-            font-style: italic;
-        }
-
-        .credential-box {
-            background: #030d14a0;
-            border-radius: 1.5rem;
-            padding: 1rem 1.5rem;
-            margin: 1.2rem 0 0.8rem 0;
-            border-left: 3px solid #38bdf8;
-        }
-        .credential-box p {
-            color: #cde3fc;
-            font-size: 0.95rem;
-            margin: 0.25rem 0;
-        }
-        .credential-box strong {
-            color: #7dd3fc;
-            font-weight: 500;
-        }
-        .notice {
-            background: #0f1f2b80;
-            padding: 0.8rem 1.2rem;
-            border-radius: 1.2rem;
-            font-size: 0.75rem;
-            color: #aac9e0;
-            border: 1px solid #2c5a74;
-            margin-top: 0.7rem;
-            line-height: 1.6;
-        }
-        .notice i {
-            color: #ffb347;
-            font-style: normal;
-        }
-        .copy-mini {
-            background: #1a3343;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-weight: 500;
-            color: #b9e2ff;
-            cursor: pointer;
-            font-size: 0.7rem;
-            transition: 0.15s;
-        }
-        .copy-mini:hover {
-            background: #2b4b6e;
-            box-shadow: 0 0 6px #38bdf8;
-        }
-        .user-id-label {
-            color: #8ca3ba;
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .flex-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            width: 100%;
+        /* responsive */
+        @media (max-width: 600px) {
+            .credential-table td {
+                padding: 0.6rem 0.8rem;
+            }
+            .credential-table .label {
+                width: 70px;
+                font-size: 0.75rem;
+            }
+            .credential-table .value {
+                font-size: 0.9rem;
+            }
+            .credential-table .value-password {
+                font-size: 1rem;
+            }
+            #userIdInput {
+                font-size: 0.9rem;
+                min-width: 120px;
+            }
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .auto-panel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .dashboard {
+                padding: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -581,41 +595,70 @@
     </div>
     <div class="sub">✔ Sesuaikan Interval Untuk Auto Generate Password Baru</div>
 
-    <!-- USER ID PANEL dengan localStorage -->
-    <div class="user-panel">
-        <div class="flex-row">
-            <span class="user-id-label">User ID</span>
-            <input type="text" id="userIdInput" placeholder="Tempel ID Anda di sini..." value="">
-            
-            <div class="user-history-dropdown">
-                <button class="user-history-btn" id="historyDropdownBtn">📜 History ID</button>
-                <div class="user-history-dropdown-content" id="historyDropdownContent">
-                    <div class="empty-msg">Belum ada ID tersimpan</div>
+    <!-- ====== MAIN TABLE ====== -->
+    <table class="credential-table">
+        <!-- ROW 1: USER ID -->
+        <tr class="user-id-row">
+            <td class="label">USER ID</td>
+            <td class="value">
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
+                    <input type="text" id="userIdInput" placeholder="Tempel ID Anda di sini..." value="Input UserID" style="flex:1; min-width:150px;">
+                    <button class="btn-mini primary" id="saveUserIdBtn">💾 Simpan ID</button>
+                    <div class="user-history-dropdown">
+                        <button class="btn-mini" id="historyDropdownBtn">📜 History ID</button>
+                        <div class="user-history-dropdown-content" id="historyDropdownContent">
+                            <div class="empty-msg">Belum ada ID tersimpan</div>
+                        </div>
+                    </div>
+                    <button class="btn-copy" id="copyUserIdBtn">📋 Copy ID</button>
                 </div>
-            </div>
-            
-            <button class="copy-mini" id="copyUserIdBtn">📋 Copy ID</button>
-            <button class="copy-mini" id="saveUserIdBtn" style="background:#1d4d6e;">💾 Simpan ID</button>
-        </div>
-    </div>
+            </td>
+        </tr>
 
-    <!-- PASSWORD PANEL -->
-    <div class="password-panel">
-        <div id="generatedPassword" style="white-space: pre-wrap;">────────</div>
-        <button class="copy-btn" id="copyPasswordBtn">📋 Copy</button>
-    </div>
+        <!-- ROW 2: PASSWORD -->
+        <tr>
+            <td class="label">PASSWORD</td>
+            <td class="value value-password">
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
+                    <span id="generatedPassword" style="flex:1;">9wjGbV</span>
+                    <button class="btn-copy" id="copyPasswordBtn">📋 Copy</button>
+                    <button class="btn-generate" id="generateBtn">🎲 Generate</button>
+                </div>
+            </td>
+        </tr>
 
-    <!-- credential box -->
-    <div class="credential-box">
-        <p><strong>Username :</strong> <span id="credUsername">───</span></p>
-        <p><strong>Password :</strong> <span id="credPassword">────────</span></p>
-        <div style="margin-top: 6px; display: flex; gap: 12px; flex-wrap: wrap;">
-            <button class="copy-mini" id="copyCredPairBtn">📋 Copy Username + Password</button>
-            <span style="font-size:0.65rem; color:#7ea6c2;">Silakan di coba login ya bosku</span>
-        </div>
-    </div>
+        <!-- ROW 3: CREDENTIAL DISPLAY (VERTIKAL) -->
+        <tr>
+            <td class="label">AKUN</td>
+            <td class="value" style="font-family: 'Segoe UI', sans-serif; font-size: 0.95rem;">
+                <div class="credential-display">
+                    <div class="cred-row">
+                        <span class="cred-label">Username :</span>
+                        <span class="cred-value" id="credUsername">AETH-8X7K-9M2P</span>
+                    </div>
+                    <div class="cred-row">
+                        <span class="cred-label">Password :</span>
+                        <span class="cred-value" id="credPassword">9wjGbV</span>
+                    </div>
+                    <div class="cred-row" style="margin-top: 4px;">
+                        <span class="cred-sub">Silakan di coba login ya bosku</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
 
-    <!-- controls -->
+        <!-- ROW 4: NOTICE -->
+        <tr class="notice-row">
+            <td colspan="2">
+                <div class="notice-text">
+                    <i>⚠️</i> Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku.<br>
+                    terima kasih
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- ====== CONTROLS ====== -->
     <div class="controls">
         <div class="length-control">
             <label>PASSWORD LENGTH (MAX 12)</label>
@@ -625,54 +668,45 @@
             </div>
         </div>
         <div class="toggles">
-            <div class="toggle-chip" id="numbersToggle">
+            <div class="toggle-chip">
                 <input type="checkbox" id="includeNumbers" checked> <label>🔢 Numbers</label>
             </div>
-            <div class="toggle-chip" id="symbolsToggle">
+            <div class="toggle-chip">
                 <input type="checkbox" id="includeSymbols" checked> <label>✨ Symbols</label>
             </div>
-            <div class="toggle-chip" id="mixedcaseToggle">
+            <div class="toggle-chip">
                 <input type="checkbox" id="includeMixedCase" checked> <label>🔤 Mixed case</label>
             </div>
         </div>
     </div>
 
-    <!-- AUTO REFRESH -->
+    <!-- ====== AUTO REFRESH ====== -->
     <div class="auto-panel">
-        <div class="auto-toggle" id="autoToggleBtn">
+        <div class="auto-toggle">
             <input type="checkbox" id="autoRefreshCheckbox"> 
             <label>🔄 Auto-Ganti Password</label>
         </div>
         <div class="interval-control">
             <label>⏱️ Interval (menit)</label>
             <input type="number" id="intervalMinutes" min="0.5" max="120" step="0.5" value="20">
-            <span style="color:#7dd3fc; font-size:0.7rem;">menit</span>
+            <span style="color:#7dd3fc; font-size:0.65rem;">menit</span>
         </div>
         <div class="auto-status" id="autoStatusText">⏸️ Auto mati</div>
     </div>
 
-    <div class="action-area">
-        <button class="generate-btn" id="generateBtn">🎲 Generate Sekarang</button>
-        <div class="stats-badge" id="entropyHint">⚡ unique pool aktif</div>
-    </div>
-    
+    <!-- ====== HISTORY ====== -->
     <hr>
-
     <div class="history-section">
         <div class="history-title">
-            <span>📜 Riwayat Password Unik </span>
-            <button id="clearHistoryBtn" class="clear-history">Clear All History</button>
+            <span>📜 Riwayat Password Unik</span>
+            <button id="clearHistoryBtn" class="clear-history">clear all</button>
         </div>
         <div id="historyList">
             <div class="history-item" style="opacity:0.6;">✨ Tekan Generate — password unik selamanya</div>
         </div>
     </div>
-
-    <!-- NOTICE -->
-    <div class="notice">
-        <i>⚠️</i> Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku. <br> terima kasih
-    </div>
 </div>
+
 <div id="toastMsg" class="toast-msg" style="opacity:0;">✓ Tersalin</div>
 
 <script>
@@ -686,30 +720,24 @@
         let globalPasswordSet = new Set();
         let generatedHistory = [];
 
-        // Load password set
         try {
             const savedSet = localStorage.getItem(STORAGE_KEY_PASSWORD_SET);
             if (savedSet) {
                 const arr = JSON.parse(savedSet);
-                if (Array.isArray(arr)) {
-                    globalPasswordSet = new Set(arr);
-                }
+                if (Array.isArray(arr)) globalPasswordSet = new Set(arr);
             }
         } catch(e) {}
 
-        // Load password history
         try {
             const savedHistory = localStorage.getItem(STORAGE_KEY_PASSWORD_HISTORY);
             if (savedHistory) {
                 const arr = JSON.parse(savedHistory);
-                if (Array.isArray(arr)) {
-                    generatedHistory = arr;
-                }
+                if (Array.isArray(arr)) generatedHistory = arr;
             }
         } catch(e) {}
 
         // ========== DOM ELEMENTS ==========
-        const generatedPasswordDiv = document.getElementById("generatedPassword");
+        const generatedPasswordSpan = document.getElementById("generatedPassword");
         const userIdInput = document.getElementById("userIdInput");
         const credUsername = document.getElementById("credUsername");
         const credPassword = document.getElementById("credPassword");
@@ -721,12 +749,10 @@
         const generateBtn = document.getElementById("generateBtn");
         const copyBtn = document.getElementById("copyPasswordBtn");
         const copyUserIdBtn = document.getElementById("copyUserIdBtn");
-        const copyCredPairBtn = document.getElementById("copyCredPairBtn");
         const saveUserIdBtn = document.getElementById("saveUserIdBtn");
         const historyContainer = document.getElementById("historyList");
         const clearHistoryBtn = document.getElementById("clearHistoryBtn");
         const uniqueCounterDisplay = document.getElementById("uniqueCounterDisplay");
-        const entropyHint = document.getElementById("entropyHint");
         const toast = document.getElementById("toastMsg");
         const historyDropdownBtn = document.getElementById("historyDropdownBtn");
         const historyDropdownContent = document.getElementById("historyDropdownContent");
@@ -750,14 +776,22 @@
             }, 2000);
         }
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if(m === '&') return '&amp;';
+                if(m === '<') return '&lt;';
+                if(m === '>') return '&gt;';
+                return m;
+            });
+        }
+
         // ========== LOCALSTORAGE SAVE ==========
         function saveToLocalStorage() {
             try {
                 localStorage.setItem(STORAGE_KEY_PASSWORD_SET, JSON.stringify([...globalPasswordSet]));
                 localStorage.setItem(STORAGE_KEY_PASSWORD_HISTORY, JSON.stringify(generatedHistory));
-            } catch(e) {
-                console.warn("Gagal menyimpan ke localStorage:", e);
-            }
+            } catch(e) {}
         }
 
         // ========== USER ID HISTORY ==========
@@ -782,11 +816,8 @@
             if (!userId || userId.trim() === '') return;
             const trimmed = userId.trim();
             let history = getUserIdHistory();
-            // Hapus duplikat
             history = history.filter(id => id !== trimmed);
-            // Tambahkan di awal
             history.unshift(trimmed);
-            // Maksimal 20 ID
             if (history.length > 20) history = history.slice(0, 20);
             saveUserIdHistory(history);
             renderUserHistoryDropdown();
@@ -804,7 +835,6 @@
             });
             historyDropdownContent.innerHTML = html;
 
-            // Event listener untuk setiap item
             historyDropdownContent.querySelectorAll('.item').forEach(el => {
                 el.addEventListener('click', function() {
                     const id = this.getAttribute('data-id');
@@ -816,20 +846,10 @@
             });
         }
 
-        function escapeHtml(str) {
-            return str.replace(/[&<>]/g, function(m) {
-                if(m === '&') return '&amp;';
-                if(m === '<') return '&lt;';
-                if(m === '>') return '&gt;';
-                return m;
-            });
-        }
-
         // ========== PASSWORD FUNCTIONS ==========
         function updateStatsUI() {
             const uniqueCount = globalPasswordSet.size;
             uniqueCounterDisplay.innerText = `🔐 generated: ${uniqueCount}`;
-            entropyHint.innerText = uniqueCount >= 10 ? `🌀 ${uniqueCount} unique keys · no repeat` : `⚡ unique pool: ${uniqueCount} passwords`;
             saveToLocalStorage();
         }
 
@@ -936,7 +956,7 @@
             });
             if(generatedHistory.length > 15) generatedHistory.pop();
             
-            generatedPasswordDiv.innerText = newPassword;
+            generatedPasswordSpan.innerText = newPassword;
             updateCredentialUI(currentUserId, newPassword);
             
             renderHistory();
@@ -967,7 +987,7 @@
                         <span style="font-family: monospace; word-break:break-all;">${escapeHtml(displayPwd)}</span>
                         <span style="display: flex; gap: 6px;">
                             <span class="badge-unique">✓ unik</span>
-                            <span style="font-size:0.65rem; color:#7ea6c2;">${escapeHtml(entry.timestamp)}</span>
+                            <span style="font-size:0.6rem; color:#7ea6c2;">${escapeHtml(entry.timestamp)}</span>
                         </span>
                     </div>
                 `;
@@ -979,7 +999,7 @@
             generatedHistory = [];
             renderHistory();
             saveToLocalStorage();
-            showMessage("Riwayat dihapus, tapi uniqueness vault tetap utuh", false);
+            showMessage("Riwayat dihapus", false);
             updateStatsUI();
         }
 
@@ -1033,7 +1053,7 @@
             if(enable) {
                 if(autoTimer) clearInterval(autoTimer);
                 startAutoRefresh();
-                showMessage(`Auto refresh diaktifkan — akan ganti tiap ${intervalMinutesInput.value} menit`, false);
+                showMessage(`Auto refresh diaktifkan`, false);
             } else {
                 stopAutoRefresh();
                 showMessage("Auto refresh dimatikan", false);
@@ -1059,9 +1079,9 @@
 
         // ========== COPY FUNCTIONS ==========
         async function copyPassword() {
-            const pwd = generatedPasswordDiv.innerText;
+            const pwd = generatedPasswordSpan.innerText;
             if(!pwd || pwd === "────────") {
-                showMessage("Tidak ada password untuk disalin", true);
+                showMessage("Tidak ada password", true);
                 return;
             }
             try {
@@ -1075,36 +1095,12 @@
         async function copyUserId() {
             const uid = userIdInput.value.trim();
             if(!uid) {
-                showMessage("Tidak ada ID untuk disalin", true);
+                showMessage("Tidak ada ID", true);
                 return;
             }
             try {
                 await navigator.clipboard.writeText(uid);
-                showMessage("🆔 User ID disalin!", false);
-            } catch(e) {
-                showMessage("Gagal menyalin", true);
-            }
-        }
-
-        async function copyCredPair() {
-            const uid = userIdInput.value.trim();
-            const pwd = generatedPasswordDiv.innerText;
-            if(!uid || !pwd || pwd === "────────") {
-                showMessage("Data credential belum siap", true);
-                return;
-            }
-            
-            const fullText = 
-`Username : ${uid}
-Password : ${pwd}
-Silakan di coba login ya bosku
-
-NB : Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku.
-terima kasih`;
-            
-            try {
-                await navigator.clipboard.writeText(fullText);
-                showMessage("✅ Credential lengkap disalin!", false);
+                showMessage("🆔 ID disalin!", false);
             } catch(e) {
                 showMessage("Gagal menyalin", true);
             }
@@ -1118,13 +1114,19 @@ terima kasih`;
                 return;
             }
             addUserIdToHistory(uid);
-            showMessage(`✅ ID "${uid}" tersimpan di perangkat ini`, false);
+            showMessage(`✅ ID "${uid}" tersimpan`, false);
         }
 
         // ========== DROPDOWN TOGGLE ==========
         function toggleDropdown() {
             historyDropdownContent.classList.toggle('show');
             renderUserHistoryDropdown();
+        }
+
+        // ========== SYNC LENGTH ==========
+        function syncLength() {
+            let val = parseInt(lengthSlider.value, 10);
+            lengthNumberSpan.innerText = val;
         }
 
         // ========== INIT ==========
@@ -1134,17 +1136,10 @@ terima kasih`;
             lengthSlider.value = "6";
             lengthNumberSpan.innerText = "6";
 
-            // Coba load last used ID dari history
             const history = getUserIdHistory();
-            let defaultId = "";
-            if (history.length > 0) {
-                defaultId = history[0];
-            } else {
-                defaultId = "AETH-8X7K-9M2P";
-            }
+            let defaultId = history.length > 0 ? history[0] : "AETH-8X7K-9M2P";
             userIdInput.value = defaultId;
 
-            // Generate initial password
             const initLength = 6;
             const charsetInit = buildCharSet(true, true, true);
             let firstPwd = "";
@@ -1155,33 +1150,23 @@ terima kasih`;
             
             if (generatedHistory.length === 0) {
                 generatedHistory.unshift({ pwd: firstPwd, timestamp: new Date().toLocaleTimeString() });
-            } else {
-                // pastikan history terakhir ada di display
-                const lastPwd = generatedHistory[0]?.pwd || firstPwd;
-                generatedPasswordDiv.innerText = lastPwd;
             }
             
-            generatedPasswordDiv.innerText = firstPwd;
-            updateCredentialUI(defaultId, firstPwd);
+            const displayPwd = generatedHistory[0]?.pwd || firstPwd;
+            generatedPasswordSpan.innerText = displayPwd;
+            updateCredentialUI(defaultId, displayPwd);
             renderHistory();
             updateStatsUI();
             renderUserHistoryDropdown();
 
-            // Event listeners
-            lengthSlider.addEventListener("input", () => {
-                let val = parseInt(lengthSlider.value, 10);
-                lengthNumberSpan.innerText = val;
-            });
-
+            lengthSlider.addEventListener("input", syncLength);
             generateBtn.addEventListener("click", () => refreshAndGenerate(true));
             copyBtn.addEventListener("click", copyPassword);
             copyUserIdBtn.addEventListener("click", copyUserId);
-            copyCredPairBtn.addEventListener("click", copyCredPair);
             saveUserIdBtn.addEventListener("click", saveCurrentUserId);
             clearHistoryBtn.addEventListener("click", clearHistoryOnly);
             historyDropdownBtn.addEventListener("click", toggleDropdown);
 
-            // Tutup dropdown saat klik di luar
             document.addEventListener("click", function(e) {
                 if (!e.target.closest('.user-history-dropdown')) {
                     historyDropdownContent.classList.remove('show');
@@ -1201,4 +1186,4 @@ terima kasih`;
     })();
 </script>
 </body>
-</html>    
+</html>
