@@ -196,22 +196,30 @@
             box-shadow: 0 8px 18px rgba(0, 160, 255, 0.2);
         }
 
-        .btn-copy {
-            background: #1e2f3f;
+        /* Tombol COPY ALL - utama */
+        .btn-copy-all {
+            background: linear-gradient(95deg, #0f3b4a, #1a5a72);
             border: none;
-            padding: 6px 16px;
+            padding: 10px 28px;
             border-radius: 60px;
-            font-weight: 600;
-            color: #b9e2ff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #e3f2ff;
             cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.75rem;
+            transition: all 0.2s;
+            border: 1px solid #38bdf8;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .btn-copy:hover {
-            background: #2b4b6e;
-            color: white;
+        .btn-copy-all:hover {
+            background: linear-gradient(95deg, #1a5a72, #2a7a94);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 160, 255, 0.3);
+        }
+        .btn-copy-all:active {
             transform: scale(0.97);
-            box-shadow: 0 0 8px #38bdf8;
         }
 
         /* History ID dropdown */
@@ -285,6 +293,13 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             word-break: break-all;
+        }
+        /* Shadow untuk ID kosong */
+        .credential-display .cred-value.empty-id {
+            color: #5a7a94;
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.7;
         }
         .credential-display .cred-sub {
             font-size: 0.65rem;
@@ -580,6 +595,10 @@
             .dashboard {
                 padding: 1.2rem;
             }
+            .btn-copy-all {
+                font-size: 0.8rem;
+                padding: 8px 18px;
+            }
         }
     </style>
 </head>
@@ -602,7 +621,7 @@
             <td class="label">USER ID</td>
             <td class="value">
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
-                    <input type="text" id="userIdInput" placeholder="Tempel ID Anda di sini..." value="Input UserID" style="flex:1; min-width:150px;">
+                    <input type="text" id="userIdInput" placeholder="Tempel ID Anda di sini..." value="">
                     <button class="btn-mini primary" id="saveUserIdBtn">💾 Simpan ID</button>
                     <div class="user-history-dropdown">
                         <button class="btn-mini" id="historyDropdownBtn">📜 History ID</button>
@@ -610,7 +629,6 @@
                             <div class="empty-msg">Belum ada ID tersimpan</div>
                         </div>
                     </div>
-                    <button class="btn-copy" id="copyUserIdBtn">📋 Copy ID</button>
                 </div>
             </td>
         </tr>
@@ -620,28 +638,28 @@
             <td class="label">PASSWORD</td>
             <td class="value value-password">
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%;">
-                    <span id="generatedPassword" style="flex:1;">9wjGbV</span>
-                    <button class="btn-copy" id="copyPasswordBtn">📋 Copy</button>
+                    <span id="generatedPassword" style="flex:1;">────────</span>
                     <button class="btn-generate" id="generateBtn">🎲 Generate</button>
                 </div>
             </td>
         </tr>
 
-        <!-- ROW 3: CREDENTIAL DISPLAY (VERTIKAL) -->
+        <!-- ROW 3: CREDENTIAL DISPLAY (VERTIKAL) + COPY ALL -->
         <tr>
             <td class="label">AKUN</td>
             <td class="value" style="font-family: 'Segoe UI', sans-serif; font-size: 0.95rem;">
                 <div class="credential-display">
                     <div class="cred-row">
                         <span class="cred-label">Username :</span>
-                        <span class="cred-value" id="credUsername">Input UserID</span>
+                        <span class="cred-value empty-id" id="credUsername">Input UserID</span>
                     </div>
                     <div class="cred-row">
                         <span class="cred-label">Password :</span>
-                        <span class="cred-value" id="credPassword">9wjGbV</span>
+                        <span class="cred-value" id="credPassword">────────</span>
                     </div>
-                    <div class="cred-row" style="margin-top: 4px;">
+                    <div class="cred-row" style="margin-top: 4px; gap: 12px; flex-wrap: wrap;">
                         <span class="cred-sub">Silakan di coba login ya bosku</span>
+                        <button class="btn-copy-all" id="copyAllBtn">📋 Copy All</button>
                     </div>
                 </div>
             </td>
@@ -699,7 +717,7 @@
     <div class="history-section">
         <div class="history-title">
             <span>📜 Riwayat Password Unik</span>
-            <button id="clearHistoryBtn" class="clear-history">clear all</button>
+            <button id="clearHistoryBtn" class="clear-history">CLEAR ALL</button>
         </div>
         <div id="historyList">
             <div class="history-item" style="opacity:0.6;">✨ Tekan Generate — password unik selamanya</div>
@@ -747,8 +765,7 @@
         const includeSymbolsCB = document.getElementById("includeSymbols");
         const includeMixedCaseCB = document.getElementById("includeMixedCase");
         const generateBtn = document.getElementById("generateBtn");
-        const copyBtn = document.getElementById("copyPasswordBtn");
-        const copyUserIdBtn = document.getElementById("copyUserIdBtn");
+        const copyAllBtn = document.getElementById("copyAllBtn");
         const saveUserIdBtn = document.getElementById("saveUserIdBtn");
         const historyContainer = document.getElementById("historyList");
         const clearHistoryBtn = document.getElementById("clearHistoryBtn");
@@ -839,11 +856,22 @@
                 el.addEventListener('click', function() {
                     const id = this.getAttribute('data-id');
                     userIdInput.value = id;
-                    credUsername.innerText = id;
+                    updateCredUsername(id);
                     historyDropdownContent.classList.remove('show');
                     showMessage(`ID "${id}" dipilih`, false);
                 });
             });
+        }
+
+        // ========== UPDATE CRED USERNAME ==========
+        function updateCredUsername(userId) {
+            const displayId = userId && userId.trim() !== '' ? userId.trim() : 'Input UserID';
+            credUsername.innerText = displayId;
+            if (!userId || userId.trim() === '') {
+                credUsername.classList.add('empty-id');
+            } else {
+                credUsername.classList.remove('empty-id');
+            }
         }
 
         // ========== PASSWORD FUNCTIONS ==========
@@ -911,7 +939,7 @@
         }
 
         function updateCredentialUI(userId, password) {
-            credUsername.innerText = userId || '───';
+            updateCredUsername(userId);
             credPassword.innerText = password || '────────';
         }
 
@@ -945,10 +973,6 @@
             globalPasswordSet.add(newPassword);
             
             let currentUserId = userIdInput.value.trim();
-            if(!currentUserId) {
-                currentUserId = "AETH-XXXX-XXXX";
-                userIdInput.value = currentUserId;
-            }
 
             generatedHistory.unshift({
                 pwd: newPassword,
@@ -1077,30 +1101,30 @@
             });
         }
 
-        // ========== COPY FUNCTIONS ==========
-        async function copyPassword() {
-            const pwd = generatedPasswordSpan.innerText;
-            if(!pwd || pwd === "────────") {
-                showMessage("Tidak ada password", true);
-                return;
-            }
-            try {
-                await navigator.clipboard.writeText(pwd);
-                showMessage("🔒 Password disalin!", false);
-            } catch(e) {
-                showMessage("Gagal menyalin", true);
-            }
-        }
-
-        async function copyUserId() {
+        // ========== COPY ALL ==========
+        async function copyAll() {
             const uid = userIdInput.value.trim();
-            if(!uid) {
-                showMessage("Tidak ada ID", true);
+            const pwd = generatedPasswordSpan.innerText;
+            
+            if (!pwd || pwd === "────────") {
+                showMessage("Belum ada password yang digenerate!", true);
                 return;
             }
+            
+            // Jika ID kosong, tampilkan "Input UserID" di hasil copy
+            const displayUid = uid || "Input UserID";
+            
+            const fullText = 
+`Username : ${displayUid}
+Password : ${pwd}
+Silakan di coba login ya bosku
+
+NB : Mohon tidak memberikan password / PIN anda kepada orang lain dan jagalah kerahasiaan ID anda. segala bentuk kehilangan chip karena adanya permainan tidak dapat dikembalikan dengan alasan apapun. kami sarankan untuk melakukan pergantian password secara berkala ya bosku.
+terima kasih`;
+            
             try {
-                await navigator.clipboard.writeText(uid);
-                showMessage("🆔 ID disalin!", false);
+                await navigator.clipboard.writeText(fullText);
+                showMessage("✅ Semua data berhasil disalin!", false);
             } catch(e) {
                 showMessage("Gagal menyalin", true);
             }
@@ -1137,7 +1161,7 @@
             lengthNumberSpan.innerText = "6";
 
             const history = getUserIdHistory();
-            let defaultId = history.length > 0 ? history[0] : "Input UserID";
+            let defaultId = history.length > 0 ? history[0] : "";
             userIdInput.value = defaultId;
 
             const initLength = 6;
@@ -1161,8 +1185,7 @@
 
             lengthSlider.addEventListener("input", syncLength);
             generateBtn.addEventListener("click", () => refreshAndGenerate(true));
-            copyBtn.addEventListener("click", copyPassword);
-            copyUserIdBtn.addEventListener("click", copyUserId);
+            copyAllBtn.addEventListener("click", copyAll);
             saveUserIdBtn.addEventListener("click", saveCurrentUserId);
             clearHistoryBtn.addEventListener("click", clearHistoryOnly);
             historyDropdownBtn.addEventListener("click", toggleDropdown);
@@ -1174,8 +1197,8 @@
             });
 
             userIdInput.addEventListener("input", function() {
-                const val = this.value.trim() || "───";
-                credUsername.innerText = val;
+                const val = this.value.trim();
+                updateCredUsername(val);
             });
 
             bindAutoEvents();
